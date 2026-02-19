@@ -1,39 +1,30 @@
 from flask import Flask
 
 import os
-import redis
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
+from app.routes.pengaturanmenu import pengaturanmenu_bp
+
 
 def create_app():
-    
-    host = os.getenv("REDIS_SERVER")
-    port = os.getenv("REDIS_PORT")
-    password = os.getenv("REDIS_PASSWORD")
-    username = os.getenv("REDIS_USERNAME") 
+    app = Flask(__name__, static_folder="app/static")    
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.join(basedir, "instance", "kasihkarunia.db")
 
-    # try:
-    #     # Connect to the Redis server
-    #     r = redis.Redis(
-    #         host=host,
-    #         port=port,
-    #         password=password,
-    #         username=username,
-    #         decode_responses=True  # Optional: automatically decode responses to strings
-    #     )
+    # routes
+    app.register_blueprint(pengaturanmenu_bp)
 
-    #     # Test the connection
-    #     if r.ping():
-    #         print("Successfully connected to Redis!")
-    #         # Example usage: set and get a key
-    #         r.set('my_key', 'Hello, remote Redis!')
-    #         value = r.get('my_key')
-    #         print(f"Value of my_key: {value}")
-    # except redis.exceptions.ConnectionError as e:
-    #     print(f"Error connecting to Redis: {e}")
+    return app
 
 if __name__=="__main__":
     app = create_app()
+    app_mode = os.getenv("APP_MODE")
+    app_host = os.getenv("APP_HOST")
+    app_port = os.getenv("APP_PORT")
 
+    if app_mode == "development":
+        print("[dev mode]")
+        app.run(host=app_host, port=app_port, debug=True)
