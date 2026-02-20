@@ -14,15 +14,46 @@ $(document).ready(function() {
 });
 
 $(document).on("click", ".chkJemaat", function() {
-    alert($(this).is(":checked"));
+    // alert($(this).is(":checked"));
+    let nilai = $(this).is(":checked");
+    let nama_gereja = $(this).parent().parent().prev().prev().text();
+    let menu = "jemaat";
+
+    let jawab = ajax_post("/pengaturanmenu/ubahmenu", {"nama_gereja": nama_gereja, "menu": menu, "nilai": nilai}, "");
+
+    if (jawab.status=='ok') {
+        alert("Menu "+menu+" pada gereja "+nama_gereja+" berhasil diubah!");
+    } else {
+        alert("Menu "+menu+" pada gereja "+nama_gereja+" gagal diubah!");
+    }
 });
 
 $(document).on("click", ".chkKeuangan", function() {
+    let nilai = $(this).is(":checked");
+    let nama_gereja = $(this).parent().parent().prev().prev().prev().text();
+    let menu = "keuangan";
 
+    let jawab = ajax_post("/pengaturanmenu/ubahmenu", {"nama_gereja": nama_gereja, "menu": menu, "nilai": nilai}, "");
+
+    if (jawab.status=='ok') {
+        alert("Menu "+menu+" pada gereja "+nama_gereja+" berhasil diubah!");
+    } else {
+        alert("Menu "+menu+" pada gereja "+nama_gereja+" gagal diubah!");
+    }
 });
 
 $(document).on("click", ".chkAsset", function() {
+    let nilai = $(this).is(":checked");
+    let nama_gereja = $(this).parent().parent().prev().prev().prev().prev().text();
+    let menu = "asset";
 
+    let jawab = ajax_post("/pengaturanmenu/ubahmenu", {"nama_gereja": nama_gereja, "menu": menu, "nilai": nilai}, "");
+
+    if (jawab.status=='ok') {
+        alert("Menu "+menu+" pada gereja "+nama_gereja+" berhasil diubah!");
+    } else {
+        alert("Menu "+menu+" pada gereja "+nama_gereja+" gagal diubah!");
+    }
 });
 
 

@@ -9,7 +9,9 @@ export function ajax_get(url, data, divTarget) {
         dataType: "json",
         async: false,
         beforeSend: function() {
-            $("#"+divTarget).html("<img src='static/images/wait01.gif' width='80' height='80'>");
+            if (divTarget!='') {
+                $("#"+divTarget).html("<img src='static/images/wait01.gif' width='80' height='80'>");
+            }
         },
         success: function(data) {
             data_to_show = data;
@@ -36,7 +38,9 @@ export function ajax_post(url, data, divTarget) {
         dataType: "json",
         async: false,
         beforeSend: function() {
-            $("#"+divTarget).html("<img src='static/images/wait01.gif' width='80' height='80'>");
+            if (divTarget!='') {
+                $("#"+divTarget).html("<img src='static/images/wait01.gif' width='80' height='80'>");
+            }
         },
         success: function(data) {
             data_to_show = data;
