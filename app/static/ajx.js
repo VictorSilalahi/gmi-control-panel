@@ -21,7 +21,7 @@ export function ajax_get(url, data, divTarget) {
 
 }
 
-export function ajax_post(url, data) {
+export function ajax_post(url, data, divTarget) {
 
     var data_to_show;
 
@@ -36,7 +36,7 @@ export function ajax_post(url, data) {
         dataType: "json",
         async: false,
         beforeSend: function() {
-
+            $("#"+divTarget).html("<img src='static/images/wait01.gif' width='80' height='80'>");
         },
         success: function(data) {
             data_to_show = data;
