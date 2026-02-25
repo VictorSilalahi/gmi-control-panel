@@ -23,15 +23,12 @@
                           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
                               <a class="nav-link" href="/pengaturanmenu">Pengaturan Menu</a>
-                              <a class="nav-link" href="/distrik">Distrik</a>
-                              <a class="nav-link" href="/jemaat">Jemaat</a>
-                              <a class="nav-link" href="/keuangan">Keuangan</a>
-                              <a class="nav-link" href="/asset">Asset</a>
+                              <a class="nav-link" href="/statdistrik">Statistik Distrik</a>
+                              <a class="nav-link" href="/statjemaat">Statistik Jemaat</a>
+                              <a class="nav-link" href="/statkeuangan">Statistik Keuangan</a>
+                              <a class="nav-link" href="#">Asset</a>
                               <a class="nav-link" href="/logout"><span class="badge text-bg-danger">Logout</span></a>
-
-
                             </div>
-
                           </div>
                         </div>
                       </nav>
@@ -40,9 +37,30 @@
                 <br>
 
                 <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8"></div>
-                    <div class="col-2">
+                    <div class="col-4">
+                      <div class="mb-3">
+                        <label class="col-form-label">Distrik:</label>
+                        <select id="slcDistrik" class="col-form-label">
+                          <option value="D-I">D-I</option>
+                          <option value="D-II">D-II</option>
+                          <option value="D-III">D-III</option>
+                          <option value="D-IV">D-IV</option>
+                          <option value="D-V">D-V</option>
+                          <option value="D-VI">D-VI</option>
+                          <option value="D-VII">D-VII</option>
+                          <option value="D-VIII">D-VIII</option>
+                          <option value="D-IX">D-IX</option>
+                          <option value="D-X">D-X</option>
+                          <option value="D-XI">D-XI</option>
+                          <option value="D-XII">D-XII</option>
+                        </select>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-success">Lihat Data</button>
+                      </div>
+
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4">
                         <button class="btn btn-info btn-tambah-server">Tambah Server</button>
                     </div>
                 </div>
@@ -82,7 +100,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="opSektor">New message</h1>
+            <h1 class="modal-title fs-5" id="opServer">New message</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -94,6 +112,23 @@
               <div class="mb-3">
                 <label class="col-form-label">Link Server:</label>
                 <input type="text" class="form-control" id="txtLinkServer">
+              </div>
+              <div class="mb-3">
+                <label class="col-form-label">Distrik:</label>
+                <select id="slcDistrikForm" class="col-form-label">
+                  <option value="D-I">D-I</option>
+                  <option value="D-II">D-II</option>
+                  <option value="D-III">D-III</option>
+                  <option value="D-IV">D-IV</option>
+                  <option value="D-V">D-V</option>
+                  <option value="D-VI">D-VI</option>
+                  <option value="D-VII">D-VII</option>
+                  <option value="D-VIII">D-VIII</option>
+                  <option value="D-IX">D-IX</option>
+                  <option value="D-X">D-X</option>
+                  <option value="D-XI">D-XI</option>
+                  <option value="D-XII">D-XII</option>
+                </select>
               </div>
               <div class="mb-3">
                 <div class="form-check form-switch">
@@ -108,16 +143,14 @@
                     <input class="form-check-input" type="checkbox" id="chkAsset">
                     <label class="form-check-label" for="chkAsset">Menu Asset</label>
                 </div>
-
             </div>
-
               <input type="hidden" value="" id="txtJenisOpServer">
               <input type="hidden" value="" id="txtServeriID">
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-            <button type="button" class="btn btn-primary" id="btnOKOrganisasi">OK</button>
+            <button type="button" class="btn btn-primary" id="btnOKServer">OK</button>
           </div>
         </div>
       </div>

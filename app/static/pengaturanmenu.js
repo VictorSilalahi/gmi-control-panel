@@ -5,11 +5,62 @@ $(document).ready(function() {
 
     load_redis();
 
-    $(".btn-tambah-server").on("click", function() {
+});
 
-        $("#AddEditServer").modal("show");
+$(".btn-tambah-server").on("click", function() {
 
-    });
+    $("#opServer").text("Tambah Server");
+    $("#txtJenisOpServer").val("tambah");
+    $("#AddEditServer").modal("show");
+
+});
+
+
+$(document).on("click", "#btnOKServer", function() {
+    
+    if ($("#txtJenisOpServer").val()=='tambah') {
+        
+        let nama_gereja = $("#txtNamaGereja").val();
+        let link_server = $("#txtLinkServer").val();
+        let distrik = $("#slcDistrik").val();
+
+        let chkJemaat = false;
+        let chkKeuangan = false;
+        let chkAsset = false;
+
+        if ($("#chkJemaat").is(":checked")==true) {
+            chkJemaat = true;
+        }
+
+        if ($("#chkKeuangan").is(":checked")==true) {
+            chkKeuangan = true;
+        }
+
+        if ($("#chkAsset").is(":checked")==true) {
+            chkAsset = true;
+        }
+
+        let aplikasi = {"jemaat": chkJemaat, "keuangan": chkKeuangan, "asset": chkAsset};
+
+        let jawab = ajax_post("/pengaturanmenu/add", {"nama_gereja": nama_gereja, "link_server": link_server, "distrik": distrik, "aplikasi": aplikasi}, "");
+
+        if (jawab.status=='ok') {
+            alert(jawab.msg);
+            $("#AddEditServer").modal("hide");
+
+        } 
+    }
+
+});
+
+$(document).on("click", ".btn-hapus", function() {
+
+    if (confirm("Hapus data gereja ini?")==true) {
+
+        let jawab = ajax_post("/pengaturanmenu/del", {"nama_gereja": nama_gereja, "link_server": link_server, "distrik": distrik, "aplikasi": aplikasi}, "");
+
+        
+    }    
 
 });
 
@@ -67,6 +118,8 @@ function load_redis() {
         let data = jawab.data;
         let isi = '';
         let no = 1;
+
+        // console.log(data);
 
         for (let i=0; i<data.length; i++) {
             isi = isi + "<tr><td>"+no+"</td><td>"+data[i]['nama']+"</td><td></td>";

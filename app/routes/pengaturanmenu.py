@@ -1,7 +1,13 @@
 from flask import Blueprint, render_template, redirect, request, session
+
 import redis
 import os
 import json
+import uuid
+
+from redis.commands.json.path import Path
+
+
 
 # route menu
 pengaturanmenu_bp = Blueprint("menu", __name__, template_folder="../templates")
@@ -56,6 +62,43 @@ def ubah_menu():
         return {"status": "error", "msg": {e}}, 400
 
 
+@pengaturanmenu_bp.route("/pengaturanmenu/add", methods=['POST'])
+def add_church():
+
+    temp = request.get_json()
+
+    nama_gereja = temp['nama_gereja']
+    link_server = temp['link_server']
+    distrik = temp['distrik']
+    aplikasi = temp['aplikasi']
+
+    new_gereja = {"nama": nama_gereja, "link": link_server, "distrik": distrik, "aplikasi": aplikasi}
+
+    temp = connect_to_redis()
+
+    if temp['status']=='ok':  
+        r = temp['data']
+        id = str(uuid.uuid4())
+        r.json().set(id, Path.root_path(), new_gereja)
+        return {"status": "ok", "msg": "Penambahan gereja berhasil!", "data": {}}, 200
+
+    else:    
+        return {"status": "error", "msg": {e}}, 400
+
+
+@pengaturanmenu_bp.route("/pengaturanmenu/del", methods=['POST'])
+def del_church():
+    temp = request.get_json()
+
+    temp = connect_to_redis()
+
+    if temp['status']=='ok':  
+        r = temp['data']
+        r.json().set('gmi:4', Path.root_path(), new_gereja)
+        return {"status": "ok", "msg": "Penambahan gereja berhasil!", "data": {}}, 200
+
+    else:    
+        return {"status": "error", "msg": {e}}, 400
 
 
 def connect_to_redis():
