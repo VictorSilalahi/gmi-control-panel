@@ -122,7 +122,7 @@ function load_redis() {
         // console.log(data);
 
         for (let i=0; i<data.length; i++) {
-            isi = isi + "<tr><td>"+no+"</td><td>"+data[i]['nama']+"</td><td></td>";
+            isi = isi + "<tr><td>"+no+"</td><td>"+data[i]['nama']+"</td><td>"+data[i]['link']+"</td>";
 
             if (data[i]['aplikasi']['jemaat']==true) {
                 isi = isi + "<td><div class='form-check form-switch'><input class='form-check-input chkJemaat' type='checkbox' checked></div></td>";
