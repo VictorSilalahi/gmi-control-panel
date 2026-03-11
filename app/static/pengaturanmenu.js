@@ -15,6 +15,13 @@ $(".btn-tambah-server").on("click", function() {
 
 });
 
+$(document).on("change", "#slcDistrik", function() {
+    alert($(this).val());
+    let distrik = $(this).val();
+
+
+});
+
 
 $(document).on("click", "#btnOKServer", function() {
     
@@ -108,7 +115,7 @@ $(document).on("click", ".chkAsset", function() {
 });
 
 
-function load_redis() {
+function load_redis(distrik) {
 
     let jawab = ajax_get("/pengaturanmenu/getredis", {}, "daftar_server");
 
