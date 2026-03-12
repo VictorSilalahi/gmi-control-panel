@@ -7,15 +7,17 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from app.routes.pengaturanmenu import pengaturanmenu_bp
+from app.routes.statjemaat import statjemaat_bp
 
 
 def create_app():
     app = Flask(__name__, static_folder="app/static")    
     basedir = os.path.abspath(os.path.dirname(__file__))
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.join(basedir, "instance", "kasihkarunia.db")
+    # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.join(basedir, "instance", "kasihkarunia.db")
 
     # routes
     app.register_blueprint(pengaturanmenu_bp)
+    app.register_blueprint(statjemaat_bp)
 
     return app
 

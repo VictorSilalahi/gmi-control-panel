@@ -1,11 +1,11 @@
 from flask import Blueprint, render_template, redirect, request, session
+from ..utils.redisconn import connect_to_redis
 
 import redis
 import os
 import json
 import uuid
 
-from redis.commands.json.path import Path
 
 
 
