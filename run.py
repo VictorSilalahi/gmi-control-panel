@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from app.routes.pengaturanmenu import pengaturanmenu_bp
-from app.routes.statjemaat import statjemaat_bp
+from app.routes.statakumulasi import statakumulasi_bp
 
 
 def create_app():
@@ -17,7 +17,7 @@ def create_app():
 
     # routes
     app.register_blueprint(pengaturanmenu_bp)
-    app.register_blueprint(statjemaat_bp)
+    app.register_blueprint(statakumulasi_bp)
 
     return app
 

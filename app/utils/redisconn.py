@@ -1,5 +1,6 @@
 import redis
 from redis.commands.json.path import Path
+import os
 
 def connect_to_redis():
     redist_host = os.getenv("REDIS_SERVER")

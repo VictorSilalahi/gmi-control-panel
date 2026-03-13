@@ -7,15 +7,15 @@ import uuid
 
 
 # route statistik jemaat
-statjemaat_bp = Blueprint("statjemaat", __name__, template_folder="../templates")
+statakumulasi_bp = Blueprint("statakumulasi", __name__, template_folder="../templates")
 
-@statjemaat_bp.route("/statjemaat")
+@statakumulasi_bp.route("/statakumulasi")
 def get_statjemaat():
-    return render_template("statjemaat.html")
+    return render_template("statakumulasi.html")
 
 
-@statjemaat_bp.route("/statjemaat/getallchurch")
-def get_all_church():
+@statakumulasi_bp.route("/statakumulasi/getalldata", methods=['GET'])
+def get_all_data():
 
     temp = connect_to_redis()
     if temp['status']=='ok':
@@ -28,6 +28,23 @@ def get_all_church():
             data.append(temp)
     
         print(data)
+
+
+        temp = []
+
+        unique_distrik = 0
+        unique_churces = 0
+        for d in data:
+            # ambil jumlah distrik yg sudah masuk ke database
+            temp.append(d['distrik'])
+            unique_churces = unique_churces + 1
+
+        unique_distrik = len(list(set(temp)))
+        
+
+
+
+
         return {"status": "ok", "msg": "Koneksi ke Redis server baik!", "data": data}, 200
 
     else:    
