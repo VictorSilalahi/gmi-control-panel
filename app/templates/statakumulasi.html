@@ -45,9 +45,11 @@
                           Jumlah Distrik
                         </div>
                         <div class="card-body">
-                          <p>
-                            <h1>11</h1>
-                          </p>
+                          <div id="jlhDistrik">
+                            <div class="spinner-border" role="status">
+                              <span class="visually-hidden">...</span>
+                            </div>
+                          </div>
                         </div>
                       </div>                    
 
@@ -58,9 +60,11 @@
                           Jumlah Gereja
                         </div>
                         <div class="card-body">
-                          <p>
-                            <h1>11</h1>
-                          </p>
+                          <div id="jlhGereja">
+                            <div class="spinner-border" role="status">
+                              <span class="visually-hidden">...</span>
+                            </div>
+                          </div>
                         </div>
                       </div>                    
 
@@ -71,9 +75,11 @@
                           Jumlah KK
                         </div>
                         <div class="card-body">
-                          <p>
-                            <h1>11</h1>
-                          </p>
+                          <div id="jlhKK">
+                            <div class="spinner-border" role="status">
+                              <span class="visually-hidden">...</span>
+                            </div>
+                          </div>
                         </div>
                       </div>                    
                   </div>
@@ -83,9 +89,11 @@
                           Jumlah Jiwa
                         </div>
                         <div class="card-body">
-                          <p>
-                            <h1>11</h1>
-                          </p>
+                          <div id="jlhJiwa">
+                            <div class="spinner-border" role="status">
+                              <span class="visually-hidden">...</span>
+                            </div>
+                          </div>
                         </div>
                       </div>                    
                   </div>
@@ -103,7 +111,11 @@
                         </div>
                         <div class="card-body">
                           <p>
-                            
+                            <div id="grJenisKeanggotan">
+                              <div class="spinner-border" role="status">
+                                <span class="visually-hidden">...</span>
+                              </div>
+                            </div>
                           </p>
                         </div>
                       </div>                    
@@ -116,13 +128,39 @@
                         </div>
                         <div class="card-body">
                           <p>
-                            
+                            <div id="grKelompokUmur">
+                              <div class="spinner-border" role="status">
+                                <span class="visually-hidden">...</span>
+                              </div>
+                            </div>
                           </p>
                         </div>
                       </div>                    
                   </div>
 
+                </div>
 
+                <br>
+
+                <div class="row">
+
+                  <div class="col-6">
+                      <div class="card">
+                        <div class="card-header">
+                          Sifat Keanggotaan
+                        </div>
+                        <div class="card-body">
+                          <p>
+                            <div id="grSifatKeanggotan">
+                              <div class="spinner-border" role="status">
+                                <span class="visually-hidden">...</span>
+                              </div>
+                            </div>
+                          </p>
+                        </div>
+                      </div>                    
+                  </div>
+                
                 </div>
 
             </div>
@@ -133,15 +171,20 @@
 
     </div>
 
-    <div class="modal fade" id="AddEditServer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalWait" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="opServer">New message</h1>
+            <h1 class="modal-title fs-5" id="opServer">Processing...</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">...</span>
+              </div>
+            </div>
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
