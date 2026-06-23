@@ -12,12 +12,12 @@ import uuid
 # route menu
 userdistrik_bp = Blueprint("userdistrik", __name__, template_folder="../templates")
 
-@pengaturanmenu_bp.route("/userdistrik")
+@userdistrik_bp.route("/userdistrik")
 def get_userdistrik():
     return render_template("userdistrik.html")
 
 
-@pengaturanmenu_bp.route("/userdistrik/getredis")
+@userdistrik_bp.route("/userdistrik/getredis")
 def get_redis():
 
     temp = connect_to_redis()
@@ -36,7 +36,7 @@ def get_redis():
         return {"status": "error", "msg": {e}}, 400
 
 
-@pengaturanmenu_bp.route("/userdistrik/ubahmenu", methods=['POST'])
+@userdistrik_bp.route("/userdistrik/ubahmenu", methods=['POST'])
 def ubah_menu():
     temp = request.get_json()
 
@@ -62,17 +62,16 @@ def ubah_menu():
         return {"status": "error", "msg": {e}}, 400
 
 
-@pengaturanmenu_bp.route("/userdistrik/add", methods=['POST'])
-def add_distrik():
+@userdistrik_bp.route("/userdistrik/add", methods=['POST'])
+def add_userdistrik():
 
     temp = request.get_json()
 
-    nama_gereja = temp['nama_gereja']
-    link_server = temp['link_server']
+    username = temp['username']
+    password = temp['password']
     distrik = temp['distrik']
-    aplikasi = temp['aplikasi']
 
-    new_gereja = {"nama": nama_gereja, "link": link_server, "distrik": distrik, "aplikasi": aplikasi}
+    new_userdistrik = {"username": username, "password": link_server, "distrik": distrik, "aplikasi": aplikasi}
 
     temp = connect_to_redis()
 
@@ -86,7 +85,7 @@ def add_distrik():
         return {"status": "error", "msg": {e}}, 400
 
 
-@pengaturanmenu_bp.route("/userdistrik/del", methods=['POST'])
+@userdistrik_bp.route("/userdistrik/del", methods=['POST'])
 def del_distrik():
     temp = request.get_json()
 

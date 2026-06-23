@@ -9,17 +9,19 @@ load_dotenv()
 from app.routes.pengaturanmenu import pengaturanmenu_bp
 from app.routes.statakumulasi import statakumulasi_bp
 from app.routes.statdistrik import statdistrik_bp
+from app.routes.userdistrik import userdistrik_bp
 
 
 def create_app():
     app = Flask(__name__, static_folder="app/static")    
     basedir = os.path.abspath(os.path.dirname(__file__))
-    # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.join(basedir, "instance", "kasihkarunia.db")
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.join(basedir, "instance", "gmi.db")
 
     # routes
     app.register_blueprint(pengaturanmenu_bp)
     app.register_blueprint(statakumulasi_bp)
     app.register_blueprint(statdistrik_bp)
+    app.register_blueprint(userdistrik_bp)
 
     return app
 
