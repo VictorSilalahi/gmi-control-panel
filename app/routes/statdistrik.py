@@ -138,6 +138,12 @@ def get_all_data():
         return {"status": "error", "msg": {e}}, 400
 
 
+@statdistrik_bp.route("/statgereja/getjemaat", methods=['GET'])
+def get_all_jemaat():
+    
+    link_gereja = request.args.get('link_gereja')
 
-
+    jemaat = requests.get(link_gereja, timeout=(5, 15))
+    data_jiwa = jemaat.json()
+    return {"data_jiwa": data_jiwa}
 

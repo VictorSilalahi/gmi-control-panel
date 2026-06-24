@@ -14,7 +14,7 @@ $(document).ready(function() {
     $("#jlhDistrik").html("");
     $("#jlhDistrik").html("<h1>"+data[0]['distrik']+"</h1");
     $("#jlhGereja").html("");
-    $("#jlhGereja").html("<h1>"+data[0]['gereja']+"</h1");
+    $("#jlhGereja").html("<a href=''><h1>"+data[0]['gereja']+"</h1></a>");
     $("#jlhJiwa").html("");
     $("#jlhJiwa").html("<h1>"+data[0]['jiwa']+"</h1");
     $("#jlhKK").html("");

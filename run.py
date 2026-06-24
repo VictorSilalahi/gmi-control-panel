@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS 
 
 import os
 
@@ -10,10 +11,12 @@ from app.routes.pengaturanmenu import pengaturanmenu_bp
 from app.routes.statakumulasi import statakumulasi_bp
 from app.routes.statdistrik import statdistrik_bp
 from app.routes.userdistrik import userdistrik_bp
+from app.routes.infodistrik import infodistrik_bp
 
 
 def create_app():
     app = Flask(__name__, static_folder="app/static")    
+    CORS(app)
     basedir = os.path.abspath(os.path.dirname(__file__))
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.join(basedir, "instance", "gmi.db")
 
@@ -22,6 +25,7 @@ def create_app():
     app.register_blueprint(statakumulasi_bp)
     app.register_blueprint(statdistrik_bp)
     app.register_blueprint(userdistrik_bp)
+    app.register_blueprint(infodistrik_bp)
 
     return app
 
